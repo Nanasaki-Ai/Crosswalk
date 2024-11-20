@@ -38,7 +38,7 @@ This is the dataset and code for manuscript
 
 - *Nov 18, 2024*
 
-&nbsp;&nbsp;&nbsp;&nbsp; The current versions are **all available** for download from **Baidu Netdisk**.
+&nbsp;&nbsp;&nbsp;&nbsp; The current versions are **all available** for download from **Baidu Disk**.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Some important data is already available for download from **Google Drive**.
 
@@ -46,7 +46,7 @@ This is the dataset and code for manuscript
 
 ## Dataset Introduction
 
- This dataset originates from continuous 24-hour live-streams of a specific intersection in Bangkok, captured from a fixed overhead perspective on **[YouTube](https://www.youtube.com/watch?v=xbBKbDwlR0E)**.
+ This dataset originates from continuous 24-hour live-streams of a specific intersection in Bangkok, captured from a fixed overhead perspective on [YouTube](https://www.youtube.com/watch?v=xbBKbDwlR0E).
  
  It consists of 10 hours of footage, divided into **120** untrimmed videos, recorded between November 2023 and May 2024.
  
@@ -57,6 +57,8 @@ This is the dataset and code for manuscript
  Focusing on **two** crosswalks, the dataset captures vehicles moving bidirectionally, entering and exiting the frame via the left and right boundaries.
  
  To reduce extraneous background activity, the recordings were confined to areas of interest, yielding a final video resolution of 1200×1100 pixels at 30 fps.
+
+ You can download the whole dataset through [Baidu Disk](https://pan.baidu.com/s/1d2cyQVXj8Kc964-4tjYk4g?pwd=mn2s).
 
 ## Dataset Annotations
 
@@ -74,7 +76,9 @@ Each JSON file contains two key data, namely **class**, **points** and **group_i
 
 The bounding box coordinates are recorded under **points**, capturing the **key vehicle's location as it enters and exits the crosswalk**. The bounding box coordinates of the vehicle in the form of **(top left x, top left y, bottom right x, bottom right y)**.
 
-**group_id** uniquely identifies the event number for pedestrian-vehicle interactions at the crosswalk, distinguishing it from other events. Note that if a vehicle violates the rules at two separate crosswalks, there will be four corresponding JSON files, each associated with two different group_ids.
+**group_id** uniquely identifies the event number for pedestrian-vehicle interactions at the crosswalk, distinguishing it from other events.
+
+If a vehicle passes through two crosswalks with pedestrians present, it corresponds to two distinct events. Each event will be associated with a unique pair of group_ids, representing the annotations for the respective events.
 
 For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. Meanwhile, Both json files have the same **group_id** and **class (0)**.
 
@@ -94,7 +98,7 @@ It is recommended to put these files in a folder as follows, and you can also **
           -video_120
         -json_to_txt.py
 
-For a certain violation of a certain vehicle 𝒱, the format of the txt file is:
+For a certain event of a certain vehicle 𝒱, the format of the txt file is:
 
         -group_id
         -2
