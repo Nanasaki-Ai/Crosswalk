@@ -36,7 +36,7 @@ This is the dataset and code for manuscript
 
 # Update Notification
 
-- *Nov 18, 2024*
+- *Nov 20, 2024*
 
 &nbsp;&nbsp;&nbsp;&nbsp; The current versions are **all available** for download from **Baidu Disk**.
 
@@ -64,7 +64,11 @@ This is the dataset and code for manuscript
 
 You can download the violation event annotations through [Baidu Disk](https://pan.baidu.com/s/1aoJLJUT-A7H4jO1Luzsp9w?pwd=6l8r) or [Google Drive](https://drive.google.com/file/d/1pKrevRdrWC7-hDcp8O-jYVJMv-YMPayW/view?usp=sharing).
 
-We define **an interaction event** as **the period during which a vehicle enters or exits the crosswalk area concurrent with a pedestrian's presence**. As a result, we have meticulously annotated approximately **7.7k** pedestrian-vehicle interaction events. The *Crosswalk* dataset comprises two categories of pedestrian-vehicle interaction events: violations and non-violations, totaling 1972 and 5752 events, respectively.
+We define **an interaction event** as **the period during which a vehicle enters or exits the crosswalk area concurrent with a pedestrian's presence**.
+
+As a result, we have meticulously annotated approximately **7.7k** pedestrian-vehicle interaction events.
+
+The *Crosswalk* dataset comprises two categories of pedestrian-vehicle interaction events: violations and non-violations, totaling 1972 and 5752 events, respectively.
 
 In this work, **event-level** annotations are used as they effectively reflect the instance situation.
 
@@ -72,13 +76,19 @@ The annotations are stored in JSON files, generated using **Labelme**, where the
 
 Each JSON file contains two key data, namely **class**, **points** and **group_id**.
 
-**class** indicates whether a vehicle violates the rule of giving way to pedestrians during the event. **class** is **0 for a violation** and **1 for no violation**.
+- **class** indicates whether a vehicle violates the rule of giving way to pedestrians during the event.
+  
+  **class** is **0 for a violation** and **1 for no violation**.
 
-The bounding box coordinates are recorded under **points**, capturing the **key vehicle's location as it enters and exits the crosswalk**. The bounding box coordinates of the vehicle in the form of **(top left x, top left y, bottom right x, bottom right y)**.
+- The bounding box coordinates are recorded under **points**, capturing the **key vehicle's location as it enters and exits the crosswalk**.
 
-**group_id** uniquely identifies the event number for pedestrian-vehicle interactions at the crosswalk, distinguishing it from other events.
+  The bounding box coordinates of the vehicle in the form of **(top left x, top left y, bottom right x, bottom right y)**.
 
-If a vehicle passes through two crosswalks with pedestrians present, it corresponds to two distinct events. Each event will be associated with a unique pair of group_ids, representing the annotations for the respective events.
+- **group_id** uniquely identifies the event number for pedestrian-vehicle interactions at the crosswalk, distinguishing it from other events.
+
+  If a vehicle passes through two crosswalks with pedestrians present, it corresponds to two distinct events.
+
+  Each event will be associated with a unique pair of group_ids, representing the annotations for the respective events.
 
 For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. Meanwhile, Both json files have the same **group_id** and **class (0)**.
 
