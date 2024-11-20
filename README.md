@@ -262,6 +262,19 @@ You can **skip this step** by downloading the **data** (3GB) ([Baidu Disk](https
 
 You can **skip this step** by downloading the **refined features** (410MB) ([Baidu Disk](https://pan.baidu.com/s/13Dpw9sfgvsDdlwnGUtXGgw?pwd=1esm) or [Google Drive](https://drive.google.com/file/d/1gZCSWD1AC2dtdrcC1bP3U5KqjTvPZ1sX/view?usp=sharing)) we preprocessed earlier.
 
+## Label Generation
+
+The generated snippets consist of 32 downsampled images, named using the format **V**xxx**I**xxxxx**S**x**D**x**R**x**A**x (where x represents a number).
+
+Let's take **V001I00002S1D0R0A1** as an example to explain the naming convention:
+
+- **V** indicates the video number. For example, **V001** refers to video_001.
+- **I** denotes the tracking ID of the key vehicle in each event. Here, **I00002** means that the vehicle's tracking ID is 2.
+- **S** stands for the scene number. **S1** represents the lower crosswalk area, while **S0** indicates the upper crosswalk area.
+- **D** specifies the vehicle's direction, indicating whether it is moving up or down, i.e., driving on the left or right side of the lane. In Thailand, vehicles typically drive on the left; **D0** represents down (right), and **D1** represents up (left).
+- **R** shows whether data augmentation was applied. In this case, all samples are **R0**, indicating no data enhancement.
+- **A** indicates whether the event is legal or illegal. **A0** denotes a violation, while **A1** indicates compliance.
+
 ## Training and Testing
 
 After completing the preprocessing, the main program can be called for training and testing.
