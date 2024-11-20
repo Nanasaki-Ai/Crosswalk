@@ -46,7 +46,6 @@ print('backbone:', backbone)
 print('features:', features)
 print('benchmark:', benchmark)
     
-# 构建label的路径并自动读取pkl文件
 label_path = os.path.join('label', benchmark, 'test_labels.pkl')
 with open(label_path, 'rb') as f:
     label = np.array(pickle.load(f))
@@ -68,10 +67,8 @@ def load_eiou(file_path):
                 eiou[name] = float(iou)
     return eiou
 
-# 设定iou阈值
-eiou_th = float(threshold)  # 可以根据需要进行调整
+eiou_th = float(threshold) 
 
-# 加载iou
 eiou_path = 'eiou_values.txt'
 eiou = load_eiou(eiou_path)
 
@@ -79,18 +76,15 @@ y_true = []
 y_score = []    
 confidence = []
 
-### 有softmax
-
 for i in tqdm(range(len(label[0]))):
     sample_name = label[0][i]
     l = int(label[1][i])
-    _, r = r1[i]  # `r` 是未经softmax处理的分数
+    _, r = r1[i]  
 
-    # 应用softmax
     probabilities = softmax(r)
     
-    predicted_class = np.argmax(probabilities)  # 获取预测类别
-    predicted_prob = np.max(probabilities)      # 获取最大概率作为置信度
+    predicted_class = np.argmax(probabilities)  
+    predicted_prob = np.max(probabilities)     
 
     eiou_val = eiou.get(sample_name, 1.0)
 
