@@ -1,25 +1,38 @@
+![](demo/teaser.jpg)
+
+<div align="center">
+  
+  ***A glimpse into our Crosswalk dataset.***
+  *It captures events involving multiple participants engaging in simultaneous interactions, highlighting diverse temporal patterns and behavioral dynamics.
+  It features two distinct crosswalk areas, enabling a comprehensive analysis of pedestrian-vehicle interactions in real-world traffic conditions.*
+  
+</div>
+
+<div align="center">
+
 # The Crosswalk Dataset
 
 This is the dataset and code for manuscript
 
 **Crosswalk: A Traffic Monitoring Dataset for Vehicle Non-Yielding Violations Detection and Interactive Scenarios Understanding**.
 
-# Overview
+</div>
 
-- The overall process of our work is illustrated in <strong><a href="#figure1">Figure 1</a></strong>.
+# Overview
 
 - We introduce a novel traffic monitoring dataset, *Crosswalk*, which not only encompasses integrated pedestrian and vehicle interactions but also specifically detects instances where vehicles fail to yield to pedestrians.
 
 - We propose a effective analytical framework to comprehend pedestrian-vehicle dynamics, facilitating the detection of specific violation incidents.
 
-<p align="center">
-  <object data="demo/framework.pdf" type="application/pdf" width="1000" height="600">
-    <p>It appears you don't have a PDF plugin for this browser. No problem... you can <a href="demo/framework.pdf">click here to download the PDF file.</a></p>
-  </object>
-</p>
-<p align="center">
-  <em><strong>Figure 1. Our framework.</strong></em>
-</p>
+![](demo/framework.jpg)
+
+<div align="center">
+  
+  ***Overview of the violation detection process, organized into two stages.***
+  *In the first stage, a tracker identifies vehicles of interest by detecting bounding box intersections within a predefined region, enabling the localization of event boundaries.
+   In the second stage, an attention mask is applied to the relevant video segments, which are then processed by a two-pathway model to classify the presence of a violation.*
+
+</div>
 
 # Update Notification
 
@@ -53,7 +66,7 @@ We define **an interaction event** as **the period during which a vehicle enters
 
 In this work, **event-level** annotations are used as they effectively reflect the instance situation.
 
-The annotations are stored in JSON files, generated using **LabelMe**, where the file names correspond to the frame numbers at which the violations occur. For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. 
+The annotations are stored in JSON files, generated using **Labelme**, where the file names correspond to the frame numbers at which the violations occur. For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. 
 
 Each JSON file contains two key data, namely **points** and **group_id**.
 
@@ -104,7 +117,16 @@ We divide the video into frames, which is also an important pre-step for subsequ
 
 # Event Awareness Method
 
-## Pretrained Detector
+The overall steps include:
+**Tracking** → **Filtering** → **Localization**
+
+**To demonstrate the output at each step, we have prepared separate Python files corresponding to nearly every stage of the process.** 
+
+You can *follow them sequentially* or *download our preprocessed files* for quick reproduction.
+
+## Tracking
+
+### Pretrained Detector
 
 To accurately detect objects of interest in traffic scenes, we use **YOLOv8** for pre-training on additional annotated datasets.
 
@@ -124,21 +146,123 @@ YOLOv8 has five variants: -n, -s, -m, -l, -x. The "model" parameter can be modif
 
 We recommend using **-m** as it achieves better results on the auxiliary dataset.
 
-## Prepeocessing Method
+### Tracking pedestrians and vehicles
 
-The overall steps include:
+You can **skip this step** by downloading the **tracking data** (430MB) we preprocessed earlier.
 
-- **Tracking**
+You can download the tracking data through [Baidu Disk](https://pan.baidu.com/s/1niuto7cPNf1DqRzpr8h0LQ?pwd=teou) or [Google Drive](https://drive.google.com/file/d/1rwJ9bXvbW7czSOqD_2WHxHweK7PadzZF/view?usp=sharing).
 
-- **Filtering**
+Make sure you have **downloaded the dataset and pretrained weights**.
 
-- **Localization**
+In addition, the **[operating environment](#pretrained-detector)** of YOLOv8 also needs to be configured.
 
-To demonstrate the output at each step, we have prepared separate Python files corresponding to nearly every stage of the process. You can *follow them sequentially* or *download our preprocessed files* for quick reproduction.
+It is recommended to **put these files in a folder as follows**, and you can also **modify the path**.
+
+        -intersection-video\      # The Crosswalk dataset
+          -video_001.avi  
+          -video_002.avi
+          ...
+          -video_120.avi
+        -detector_weight\         # The detector weight
+          -m\          
+            -weights\
+              -best.pt
+        -tracking.py
+
+*Next, the tracker is called to sequentially process the video:*
+
+`python tracking.py`
+
+The program takes several hours to run completely. You will get the following in the same file:
+
+        -tracking.py
+        -tracking_output\  
+          -video_001.txt  
+          -video_002.txt
+          ...
+          -video_120.txt
+
+These txt files contain the raw tracking data.
+
+## Filtering
+
+*Filter the original trajectory to identify the vehicle IDs of interest:*
+
+`python filtering_1.py`
+
+You can **skip this step** by downloading the **data** (62MB) we preprocessed earlier.
+
+You can download the data through [Baidu Disk](https://pan.baidu.com/s/1NY9l_OWqlPoGjJXLiPhoCQ?pwd=lq1p) or [Google Drive](https://drive.google.com/file/d/1dbJPFLjdewRFxvqY_KOMwKh-FoD4wBnn/view?usp=sharing).
+
+## Localization
+
+*Next, use the vehicle IDs identified in the previous stage, determine the time when each vehicle enters and exits the crosswalk:*
+
+`python filtering_2.py`
+
+You can **skip this step** by downloading the **data** (65MB) we preprocessed earlier.
+
+You can download the data through [Baidu Disk](https://pan.baidu.com/s/1ANqBnCyIplW-DCj-e2f9gw?pwd=pit3) or [Google Drive](https://drive.google.com/file/d/1rBsdkhpgCxxTE-xbToJRY7jkWnFSdUND/view?usp=sharing).
+
+*Then, generate the detection value in txt format:*
+
+`python filtering_3.py`
+
+Its format is similar to the ground truth:
+
+        -track_id
+        -How many times (all 2)
+        -1 / Number of frames entering the zebra crossing area / (all 0) / Bounding box when entering the zebra crossing
+        -2 / Number of frames leaving the zebra crossing area / (all 0) / Bounding box when leaving the zebra crossing
+
+You can **skip this step** by downloading the **data** (610KB) we preprocessed earlier.
+
+You can download the data through [Baidu Disk](https://pan.baidu.com/s/1pSkRGPJDVL0-rX19NRC33A?pwd=n0lk) or [Google Drive](https://drive.google.com/file/d/1JCwaziKEMoWawvzuc8Oy2M0VPM7wy9OX/view?usp=sharing).
 
 # MRN
 
-## Train and Test
+## Feature Extraction
+
+For the pedestrian-vehicle interaction events of interest, we construct **two** types of representations:
+
+**video representation (VR)** and **refined representation (RR)**.
+
+<hr style="width:50%;text-align:center;margin-left:auto;margin-right:auto;">
+
+ <p align="center">
+  <img src="demo/VR.gif" alt="Stage #3" width="300"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="demo/RR.gif" alt="Stage #5" width="300"/>
+</p>
+ <p align="center">
+  <em><strong>Feature visualization.</strong> Left: Video representation. Right: Refined representation.</em>
+</p> 
+
+### VR Generation
+
+*Construct the video representation from the original video:*
+
+`python preprocessing_vr.py`
+
+You can **skip this step** by downloading the [VR features](https://pan.baidu.com/s/1JVXRf5kXREh3a1REQBJwUQ?pwd=m4r4) (11.9GB)
+
+### RR Generation
+
+Generate refined representations based on raw video and tracking data.
+
+***First**, generate grayscale images that are consistent with the length and width of the original video frame and retain the position of pedestrians:*
+
+`python background_removal_att.py`
+
+You can **skip this step** by downloading the **data** (3GB) ([Baidu Disk](https://pan.baidu.com/s/1KOMPo5z3BxNEmknNRjhccg?pwd=h0a1) or [Google Drive](https://drive.google.com/file/d/1XtTEBXPn_PMUlBVZx58V1vZ59Or9xaFD/view?usp=sharing)) we preprocessed earlier.
+
+***Then**, according to the key vehicle of each event, its position is represented in the grayscale sequence with a brightness different from that of pedestrians.*
+
+`python preprocessing_rr.py`
+
+You can **skip this step** by downloading the **refined features** (410MB) ([Baidu Disk](https://pan.baidu.com/s/13Dpw9sfgvsDdlwnGUtXGgw?pwd=1esm) or [Google Drive](https://drive.google.com/file/d/1gZCSWD1AC2dtdrcC1bP3U5KqjTvPZ1sX/view?usp=sharing)) we preprocessed earlier.
+
+## Training and Testing
 
 After completing the preprocessing, the main program can be called for training and testing.
 
@@ -157,8 +281,6 @@ It is recommended to **put these files in a folder as follows**, and you can als
 *When training an MRN from scratch, run:*
 
 `python main.py`
-
-
 
 You can use the model we have trained for testing.
 
