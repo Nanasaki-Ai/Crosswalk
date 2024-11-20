@@ -26,13 +26,13 @@ This is the dataset and code for manuscript
 
  This dataset originates from continuous 24-hour live-streams of a specific intersection in Bangkok, captured from a fixed overhead perspective on **[YouTube](https://www.youtube.com/watch?v=xbBKbDwlR0E)**.
  
- It consists of 10 hours of footage, divided into 120 untrimmed videos, recorded between November 2023 and May 2024.
+ It consists of 10 hours of footage, divided into **120** untrimmed videos, recorded between November 2023 and May 2024.
  
- Video numbers range from *video_001* to *video_120*. All videos are five minutes long.
+ Video numbers range from **video_001.avi** to **video_120.avi**. All videos are **five minutes** long.
  
  These videos feature the same traffic scene under various weather conditions and times of day.
  
- Focusing on two pedestrian crosswalks, the dataset captures vehicles moving bidirectionally, entering and exiting the frame via the left and right boundaries.
+ Focusing on **two** crosswalks, the dataset captures vehicles moving bidirectionally, entering and exiting the frame via the left and right boundaries.
  
  To reduce extraneous background activity, the recordings were confined to areas of interest, yielding a final video resolution of 1200×1100 pixels at 30 fps.
 
@@ -40,25 +40,23 @@ This is the dataset and code for manuscript
 
 You can download the violation event annotations through [Baidu Disk](https://pan.baidu.com/s/1aoJLJUT-A7H4jO1Luzsp9w?pwd=6l8r) or [Google Drive](https://drive.google.com/file/d/1pKrevRdrWC7-hDcp8O-jYVJMv-YMPayW/view?usp=sharing).
 
-We will *make the annotations fully available for download after the manuscript is accepted*. Howerver, you can still reproduce our work at this stage. You can download our preprocessed features and use them directly for downstream tasks.
+We define **an interaction event** as **the period during which a vehicle enters or exits the crosswalk area concurrent with a pedestrian's presence**. As a result, we have meticulously annotated approximately **7.7k** pedestrian-vehicle interaction events. The *Crosswalk* dataset comprises two categories of pedestrian-vehicle interaction events: violations and non-violations, totaling 1972 and 5752 events, respectively.
 
-We define an interaction event as the period during which a vehicle enters or exits the crosswalk area concurrent with a pedestrian's presence. As a result, we have meticulously annotated approximately 7.7k pedestrian-vehicle interaction events. The *Crosswalk* dataset comprises two categories of pedestrian-vehicle interaction events: violations and non-violations, totaling 1972 and 5752 events, respectively.
+In this work, **event-level** annotations are used as they effectively reflect the instance situation.
 
-In this work, *event-level* annotations are used as they effectively reflect the instance situation.
+The annotations are stored in JSON files, generated using **LabelMe**, where the file names correspond to the frame numbers at which the violations occur. For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. 
 
-The annotations are stored in JSON files, generated using LabelMe, where the file names correspond to the frame numbers at which the violations occur. For instance, if a vehicle enters the area of interest at frame 1301 and leaves at frame 1501, and fails to yield to pedestrians during this time, two JSON files will be created: 00001300.json and 00001500.json. 
+Each JSON file contains two key data, namely **points** and **group_id**.
 
-Each JSON file contains two key data, namely *points* and *group_id*.
+The bounding box coordinates are recorded under **points**, capturing the key vehicle's location as it enters and exits the crosswalk. The bounding box coordinates of the vehicle in the form of **(top left x, top left y, bottom right x, bottom right y)**.
 
-The bounding box coordinates are recorded under *points*, capturing the key vehicle's location as it enters and exits the crosswalk. The bounding box coordinates of the vehicle in the form of *(top left x, top left y, bottom right x, bottom right y)*.
+**group_id** uniquely identifies the vehicle within the annotated area, distinguishing it from other vehicles. Note that if a vehicle violates the rules at two separate crosswalks, there will be four corresponding JSON files, each associated with two different group_ids.
 
-*group_id* uniquely identifies the vehicle within the annotated area, distinguishing it from other vehicles. Note that if a vehicle violates the rules at two separate crosswalks, there will be four corresponding JSON files, each associated with two different group_ids.
-
-Convert event annotations in json format to txt text. Run:
+*Convert event annotations in json format to txt text. Run:*
 
 `python json_to_txt.py`
 
-It is recommended to **put these files in a folder as follows**, and you can also **modify the path**.
+It is recommended to put these files in a folder as follows, and you can also **modify the path**.
 
         -annotations\
           -video_001\
@@ -70,28 +68,28 @@ It is recommended to **put these files in a folder as follows**, and you can als
           -video_120
         -json_to_txt.py
 
-For a certain violation of a certain vehicle, the format of the txt file is:
+For a certain violation of a certain vehicle 𝒱, the format of the txt file is:
 
         -group_id
-        -How many times (all 2)
-        -1 / Number of frames entering the zebra crossing area / (all 0) / Bounding box when entering the zebra crossing
-        -2 / Number of frames leaving the zebra crossing area / (all 0) / Bounding box when leaving the zebra crossing
+        -2
+        -1 / The frame number in which 𝒱 enters the crosswalk / 0 / The bounding box when 𝒱 enters the crosswalk
+        -2 / The frame number in which 𝒱 leaves the crosswalk / 0 / The bounding box when 𝒱 leaves the crosswalk
 
 ## Evaluation Criteria
 
-To evaluate the model's generalization and robustness, we designed two distinct cross-validation benchmarks: *cross-video* and *cross-scene*.
+To evaluate the model's generalization and robustness, we designed two distinct cross-validation benchmarks: **cross-video** and **cross-scene**.
 
-- *Cross-video evaluation.* We sequentially numbered 120 video segments, with snippets from odd-numbered videos used for training and even-numbered for testing. This method evaluates the model's ability to generalize across diverse video sequences.
+- **Cross-video evaluation.** We sequentially numbered 120 video segments, with snippets from odd-numbered videos used for training and even-numbered for testing. This method evaluates the model's ability to generalize across diverse video sequences.
 
-- *Cross-scene evaluation.* Under this benchmark, events from the upper zebra crossing areas were assigned to the training dataset, while events from the lower areas were allocated to testing. This approach assesses the model's capability to recognize violations across varied traffic scenarios.
+- **Cross-scene evaluation.** Under this benchmark, events from the upper crosswalk area were assigned to the training dataset, while events from the lower area were allocated to testing. This approach assesses the model's capability to recognize violations across varied traffic scenarios.
 
 ## Dataset Preparation
 
 We divide the video into frames, which is also an important pre-step for subsequent preprocessing.
 
-`pip install video-cli`
+*Take video_001.avi as an example and divide it into frames:*
 
-Take video_001 as an example and divide it into frames:
+`pip install video-cli`
 
 `video-toimg video_001.avi`
 
@@ -99,11 +97,9 @@ Take video_001 as an example and divide it into frames:
 
 ## Pretrained Detector
 
-To accurately detect objects of interest in traffic scenes, we use YOLOv8-m for pre-training on additional annotated datasets.
+To accurately detect objects of interest in traffic scenes, we use **YOLOv8** for pre-training on additional annotated datasets.
 
-We recommend using the provided datasets for object detector training or utilizing the trained model parameters.
-
-This additional [auxiliary dataset](https://app.roboflow.com/nnu-hi7if/nnu_intersection/7) is used to train the object detector.
+We recommend using the provided [dataset](https://app.roboflow.com/nnu-hi7if/nnu_intersection/7) for object detector training or utilizing the trained model parameters.
 
 Please install the environment according to the official website of [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics/blob/main/README.md).
 
@@ -111,13 +107,13 @@ All models were trained on an RTX 4090. You can use our **pretrained weights** o
 
 You can download the weights through [Baidu Disk](https://pan.baidu.com/s/1XhjA8IiR8zNuU3blHsymEQ?pwd=z8fl) or [Google Drive](https://drive.google.com/drive/folders/1fPra_scgzv_RP1yKMQ83HdyWiVFyeYkc?usp=sharing).
 
-Training a detector from scratch：
+*Training a detector from scratch：*
 
 `yolo task=detect mode=train model=yolov8m.pt data=intersection_images/data.yaml epochs=100 imgsz=640`
 
 YOLOv8 has five variants: -n, -s, -m, -l, -x. The "model" parameter can be modified to specify the variant to use.
 
-We recommend using -m as it achieves better results on auxiliary datasets.
+We recommend using **-m** as it achieves better results on the auxiliary dataset.
 
 ## Prepeocessing Method
 
@@ -133,11 +129,57 @@ To demonstrate the output at each step, we have prepared separate Python files c
 
 # MRN
 
+## Train and Test
+
 After completing the preprocessing, the main program can be called for training and testing.
+
+It is recommended to **put these files in a folder as follows**, and you can also **modify the path**.
+
+        -main.py
+        -dataset_reader_mrn.py      # Load the preprocessed data.
+        -model_mrn.py               # Call the model and give it arguments
+        -model                      # Modelzoo
+        -label                      # Label file
+
+        -tra_att_volumes_region     # VR
+        -rgb_volumes_region         # RR
+        ...
+
+*When training an MRN from scratch, run:*
+
+`python main.py`
+
+
+
+You can use the model we have trained for testing.
 
 You can also modify the parameters to call other models for training and testing.
 
-You can use the model we have trained for testing.
+## EIoU and AP
+
+For each event, we get two scores (violation and non-violation) during the test phase.
+
+For MRN, we take the category corresponding to the maximum score.
+
+For other models, we adopt the strategy of late fusion, and the scores of RR and VR are respectively input into the network for weighted fusion.
+
+On this basis, we calculate **AP** based on the **EIoU** of each detected event and the ground truth.
+
+In this work, **the threshold of EIoU** is set to **0.5**. 
+
+That is, for each real event, **the EIoU of the detected event must be greater than the threshold** and **the predicted category must be correct** to be judged as **a successful detection**.
+
+Each annotated event can **only be retrieved once**.
+
+Therefore, for the predicted score, calculating AP requires **two** steps.
+
+*The **first** step is to calculate the EIoU between the detected event and the ground truth:*
+
+`python eiou_cal.py`
+
+*The **second** step is to calculate AP based on the EIoU and whether the predicted category is accurate:*
+
+`python ap_cal.py`
 
 # Acknowledgments and Contact
 
