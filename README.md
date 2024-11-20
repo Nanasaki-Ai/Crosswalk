@@ -208,12 +208,12 @@ You can download the data through [Baidu Disk](https://pan.baidu.com/s/1ANqBnCyI
 
 `python filtering_3.py`
 
-Its format is similar to the ground truth:
+Assume that the key vehicle in the detected event is 𝒱𝒹, its format is similar to the ground truth:
 
         -track_id
-        -How many times (all 2)
-        -1 / Number of frames entering the zebra crossing area / (all 0) / Bounding box when entering the zebra crossing
-        -2 / Number of frames leaving the zebra crossing area / (all 0) / Bounding box when leaving the zebra crossing
+        -2
+        -1 / The frame number in which 𝒱𝒹 enters the crosswalk / 0 / The bounding box when 𝒱𝒹 enters the crosswalk
+        -2 / The frame number in which 𝒱𝒹 leaves the crosswalk / 0 / The bounding box when 𝒱𝒹 leaves the crosswalk
 
 You can **skip this step** by downloading the **data** (610KB) we preprocessed earlier.
 
