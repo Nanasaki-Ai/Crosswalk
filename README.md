@@ -66,13 +66,17 @@ We define **an interaction event** as **the period during which a vehicle enters
 
 In this work, **event-level** annotations are used as they effectively reflect the instance situation.
 
-The annotations are stored in JSON files, generated using **Labelme**, where the file names correspond to the frame numbers at which the violations occur. For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. 
+The annotations are stored in JSON files, generated using **Labelme**, where the file names correspond to the frame numbers at which the events occur. 
 
-Each JSON file contains two key data, namely **points** and **group_id**.
+Each JSON file contains two key data, namely **class**, **points** and **group_id**.
 
-The bounding box coordinates are recorded under **points**, capturing the key vehicle's location as it enters and exits the crosswalk. The bounding box coordinates of the vehicle in the form of **(top left x, top left y, bottom right x, bottom right y)**.
+**class** indicates whether a vehicle violates the rule of giving way to pedestrians during the event. **class** is **0 for a violation** and **1 for no violation**.
 
-**group_id** uniquely identifies the vehicle within the annotated area, distinguishing it from other vehicles. Note that if a vehicle violates the rules at two separate crosswalks, there will be four corresponding JSON files, each associated with two different group_ids.
+The bounding box coordinates are recorded under **points**, capturing the **key vehicle's location as it enters and exits the crosswalk**. The bounding box coordinates of the vehicle in the form of **(top left x, top left y, bottom right x, bottom right y)**.
+
+**group_id** uniquely identifies the event number for pedestrian-vehicle interactions at the crosswalk, distinguishing it from other events. Note that if a vehicle violates the rules at two separate crosswalks, there will be four corresponding JSON files, each associated with two different group_ids.
+
+For instance, if a vehicle enters the area of interest at frame **1301** and leaves at frame **1501**, and fails to yield to pedestrians during this time, two JSON files will be created: **00001300.json** and **00001500.json**. Meanwhile, Both json files have the same **group_id** and **class (0)**.
 
 *Convert event annotations in json format to txt text. Run:*
 
