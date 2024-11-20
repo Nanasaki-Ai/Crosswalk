@@ -6,11 +6,20 @@ This is the dataset and code for manuscript
 
 # Overview
 
+- The overall process of our work is illustrated in <strong><a href="#figure1">Figure 1</a></strong>.
+
 - We introduce a novel traffic monitoring dataset, *Crosswalk*, which not only encompasses integrated pedestrian and vehicle interactions but also specifically detects instances where vehicles fail to yield to pedestrians.
 
 - We propose a effective analytical framework to comprehend pedestrian-vehicle dynamics, facilitating the detection of specific violation incidents.
 
-- A quick overview of this work: *Crosswalk*, *event awareness method*, *MRN*.
+<p align="center">
+  <object data="demo/framework.pdf" type="application/pdf" width="1000" height="600">
+    <p>It appears you don't have a PDF plugin for this browser. No problem... you can <a href="demo/framework.pdf">click here to download the PDF file.</a></p>
+  </object>
+</p>
+<p align="center">
+  <em><strong>Figure 1. Our framework.</strong></em>
+</p>
 
 # Update Notification
 
@@ -141,8 +150,8 @@ It is recommended to **put these files in a folder as follows**, and you can als
         -model                      # Modelzoo
         -label                      # Label file
 
-        -tra_att_volumes_region     # VR
-        -rgb_volumes_region         # RR
+        -tra_att_volumes_region     # RR
+        -rgb_volumes_region         # VR
         ...
 
 *When training an MRN from scratch, run:*
