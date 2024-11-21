@@ -245,7 +245,7 @@ For the pedestrian-vehicle interaction events of interest, we construct **two** 
 
 **video representation (VR)** and **refined representation (RR)**.
 
-<hr style="width:50%;text-align:center;margin-left:auto;margin-right:auto;">
+<hr style="width:20%;text-align:center;margin-left:auto;margin-right:auto;">
 
  <p align="center">
   <img src="demo/VR.gif" alt="Stage #3" width="300"/>
@@ -255,6 +255,8 @@ For the pedestrian-vehicle interaction events of interest, we construct **two** 
  <p align="center">
   <em><strong>Feature visualization.</strong> Left: Video representation. Right: Refined representation.</em>
 </p> 
+
+<hr style="width:20%;text-align:center;margin-left:auto;margin-right:auto;">
 
 ### VR Generation
 
@@ -343,16 +345,20 @@ Therefore, for the predicted score, calculating AP requires **two** steps.
 
 `python ap_cal.py`
 
-# Acknowledgments and Contact
-
-We would like to express our sincere gratitude to the following individuals and groups for their invaluable assistance in this work:
-
-- The person in charge of the YouTube live broadcast platform for permitting data collection.
-
-- The officers in Nanjing Transport for their meticulous annotation of the dataset.
-
-- Potential contributors, including reviewers and researchers, for their interest and input in this work.
+# Contact
 
 Any questions, feel free to contact me via email: `zeshenghu@njnu.edu.cn`
 
-**In view of the double-blind review, we temporarily anonymized the contact email address and transport department.**
+<div align="center">
+
+# Acknowledgments
+
+***We would like to express our sincere gratitude to the following individuals and groups for their invaluable assistance in this work:***
+
+**- The person in charge of the YouTube live broadcast platform for permitting data collection.**
+
+**- The officers in Nanjing Transport for their meticulous annotation of the dataset.**
+
+**- Potential contributors, including reviewers and researchers, for their interest and input in this work.**
+
+</div>
