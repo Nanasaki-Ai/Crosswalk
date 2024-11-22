@@ -58,7 +58,11 @@ This is the dataset and code for manuscript
  
  To reduce extraneous background activity, the recordings were confined to areas of interest, yielding a final video resolution of 1200×1100 pixels at 30 fps.
 
- You can download the whole dataset through [Baidu Disk](https://pan.baidu.com/s/1d2cyQVXj8Kc964-4tjYk4g?pwd=mn2s).
+  We will **make the dataset fully available for download** after **the manuscript is accepted**. Now you can reproduce our method in two ways:
+
+-- Download a video (514MB) from the dataset and continue. You can download the data through [Baidu Disk](https://pan.baidu.com/s/1KAySJ_DNrKo6M6l0_Si7nw?pwd=cpgd) or [Google Drive](https://drive.google.com/file/d/16By0jyQPQsdZpp_oTwgnEppsrpBTTYox/view?usp=drive_link).
+
+-- You can **directly download our preprocessed data for reproduction**.
 
 ## Dataset Annotations
 
