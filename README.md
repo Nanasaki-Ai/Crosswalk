@@ -16,6 +16,12 @@ This is the dataset and code for manuscript
 
 **Crosswalk: A Traffic Monitoring Dataset for Vehicle Non-Yielding Violations Detection and Interactive Scenarios Understanding**.
 
+✨ *A modest and well-mannered human, as warm and soothing as jade.* ✨
+
+🌟 *It is a mark of grace for vehicles to yield with courtesy, just as it is for pedestrians to express their gratitude with warmth.* 🌟
+
+😊 * Take a peek at this delightful [video](https://www.bilibili.com/video/BV1yxzMYvEAR/?spm_id_from=333.999.0.0&vd_source=eddbddd586274419b16d008f523949ef) (48 seconds) ! * 😊
+
 </div>
 
 # Overview
@@ -36,7 +42,7 @@ This is the dataset and code for manuscript
 
 # Update Notification
 
-- *Nov 22, 2024*
+- *Dec 2, 2024*
 
 &nbsp;&nbsp;&nbsp;&nbsp; The current versions are **all available** for download from **Baidu Disk**.
 
