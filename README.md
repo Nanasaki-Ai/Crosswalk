@@ -241,7 +241,7 @@ You can **skip this step** by downloading the **data** (610KB) we preprocessed e
 
 You can download the data through [Baidu Disk](https://pan.baidu.com/s/1pSkRGPJDVL0-rX19NRC33A?pwd=n0lk) or [Google Drive](https://drive.google.com/file/d/1JCwaziKEMoWawvzuc8Oy2M0VPM7wy9OX/view?usp=sharing).
 
-# MRN
+# MAN
 
 ## Feature Extraction
 
@@ -306,8 +306,8 @@ After completing the preprocessing, the main program can be called for training 
 It is recommended to **put these files in a folder as follows**, and you can also **modify the path**.
 
         -main.py
-        -dataset_reader_mrn.py      # Load the preprocessed data.
-        -model_mrn.py               # Call the model and give it arguments
+        -dataset_reader_man.py      # Load the preprocessed data.
+        -model_man.py               # Call the model and give it arguments
         -model                      # Modelzoo
         -label                      # Label file
 
@@ -315,7 +315,7 @@ It is recommended to **put these files in a folder as follows**, and you can als
         -rgb_volumes_region         # VR
         ...
 
-*When training an MRN from scratch, run:*
+*When training an MAN from scratch, run:*
 
 `python main.py`
 
@@ -327,7 +327,7 @@ You can also modify the parameters to call other models for training and testing
 
 For each event, we get two scores (violation and non-violation) during the test phase.
 
-For MRN, we take the category corresponding to the maximum score.
+For MAN, we take the category corresponding to the maximum score.
 
 For other models, we adopt the strategy of late fusion, and the scores of RR and VR are respectively input into the network for weighted fusion.
 
@@ -348,6 +348,10 @@ Therefore, for the predicted score, calculating AP requires **two** steps.
 *The **second** step is to calculate AP based on the EIoU and whether the predicted category is accurate:*
 
 `python ap_cal.py`
+
+*Calculate the AP after score fusion:*
+
+`python ap_cal_fushion.py`
 
 # Contact
 
