@@ -12,20 +12,20 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--benchmark', default='cs1',
                     choices={'cs1', 'cv1'},
                     help='the work folder for storing results')
-parser.add_argument('--feature', default='2',
+parser.add_argument('--feature', default='3',
                     choices={'1', '2', '3', '4', '5', '6'},                  
                     help='input features, ...\
                     1: vr ...\
                     2: rr ...\
-                    3: mr, i.e., vr+rr (especially for mrn) ...\
+                    3: mr, i.e., vr+rr (especially for MAN) ...\
                     4: rr_mask (especially for different att_mask in slowfast) ...\
                     5: rr_obj (especially for object-based att_region in slowfast) ...\
                     6: rr_entire (especially for fixed att_region in slowfast) ...\
                     ')
 parser.add_argument('--backbone',
-                    default='mrn',
+                    default='man',
                     choices={'p3d', 'densenet', 's3d', 'i3d', 
-                    'slowfast', 'slowonly', 'mrn', 'mrn-new',
+                    'slowfast', 'slowonly', 'man',
                     'res3d', 'shuv2', 'mobv2',
                     'vit', 'simplevit', 'vivit'},
                     help='visual encoder')                    
@@ -89,7 +89,6 @@ eiou = load_eiou(eiou_path)
 y_true = []
 y_score_0 = []    
 y_score_1 = []  
-
 
 for i in tqdm(range(len(label[0]))):
     sample_name = label[0][i]
