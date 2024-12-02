@@ -20,7 +20,7 @@ This is the dataset and code for manuscript
 
 🌟 *It is a mark of grace for vehicles to yield with courtesy, just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
-😊 * Take a peek at this delightful [video](https://www.bilibili.com/video/BV1yxzMYvEAR/?spm_id_from=333.999.0.0&vd_source=eddbddd586274419b16d008f523949ef) (48 seconds) ! * 😊
+😊 *Take a peek at this delightful [video](https://www.bilibili.com/video/BV1yxzMYvEAR/?spm_id_from=333.999.0.0&vd_source=eddbddd586274419b16d008f523949ef) (48 seconds) !* 😊
 
 </div>
 
@@ -369,10 +369,10 @@ Any questions, feel free to contact me via email: `zeshenghu@njnu.edu.cn`
 
 ***We would like to express our sincere gratitude to the following individuals and groups for their invaluable assistance in this work:***
 
-**- The person in charge of the YouTube live broadcast platform for permitting data collection.**
+🧡 **- The person in charge of the YouTube live broadcast platform for permitting data collection.**
 
-**- The officers in Nanjing Transport for their meticulous annotation of the dataset.**
+🧡 **- The officers in Nanjing Transport for their meticulous annotation of the dataset.**
 
-**- Potential contributors, including reviewers and researchers, for their interest and input in this work.**
+🧡 **- Potential contributors, including reviewers and researchers, for their interest and input in this work.**
 
 </div>
