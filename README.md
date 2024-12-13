@@ -46,7 +46,7 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 - *Dec 13, 2024*
 
-&nbsp;&nbsp;&nbsp;&nbsp; You can download the model [parameters](Training and Testing) to reproduce.
+&nbsp;&nbsp;&nbsp;&nbsp; You can download the model [parameters](#training-and-testing) to reproduce.
 
 - *Dec 9, 2024*
 
