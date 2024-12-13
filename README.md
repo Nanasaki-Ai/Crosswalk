@@ -44,6 +44,10 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 # Update Notification
 
+- *Dec 13, 2024*
+
+&nbsp;&nbsp;&nbsp;&nbsp; You can download the model [parameters](Training and Testing) to reproduce.
+
 - *Dec 9, 2024*
 
 &nbsp;&nbsp;&nbsp;&nbsp; The current versions are **all available** for download from **Baidu Disk**.
@@ -76,7 +80,7 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 You can download the violation event annotations through [Baidu Disk](https://pan.baidu.com/s/1aoJLJUT-A7H4jO1Luzsp9w?pwd=6l8r) or [Google Drive](https://drive.google.com/file/d/1pKrevRdrWC7-hDcp8O-jYVJMv-YMPayW/view?usp=sharing).
 
-We define **an interaction event** as **the period during which a vehicle enters or exits the crosswalk area concurrent with a pedestrian's presence**.
+We define **an interaction event** as **the period during which a vehicle enters or exits the crosswalk area concurrent with a (or several) pedestrian's presence**.
 
 As a result, we have meticulously annotated approximately **7.7k** pedestrian-vehicle interaction events.
 
@@ -327,7 +331,9 @@ It is recommended to **put these files in a folder as follows**, and you can als
 
 `python main.py`
 
-You can use the model we have trained for testing.
+You can use the model we have trained for testing. The [model](https://pan.baidu.com/s/1-doUH8tVlqMzRaUqd-qGUw?pwd=hcqv) is specially for **cross-scene** evaluation.
+
+Please **calculate AP** after predicting the illegal/non-violation scores. Please refer to the next step for specific operations.
 
 You can also modify the parameters to call other models for training and testing.
 
