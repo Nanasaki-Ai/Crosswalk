@@ -172,7 +172,7 @@ All models were trained on an RTX 4090. You can use our **pretrained weights** o
 
 You can download the weights through [Baidu Disk](https://pan.baidu.com/s/1XhjA8IiR8zNuU3blHsymEQ?pwd=z8fl) or [Google Drive](https://drive.google.com/drive/folders/1fPra_scgzv_RP1yKMQ83HdyWiVFyeYkc?usp=sharing).
 
-*Training a detector from scratch：*
+*It is recommended to train the detector based on the pre-trained parameters:*
 
 `yolo task=detect mode=train model=yolov8m.pt data=intersection_images/data.yaml epochs=100 imgsz=640`
 
