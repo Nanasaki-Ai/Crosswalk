@@ -133,6 +133,15 @@ For a certain event of a certain vehicle 𝒱, the format of the txt file is:
 
 ## Evaluation Criteria
 
+![](demo/benchmark.jpg)
+
+<div align="center">
+  
+  ***Illustration of the cross-validation benchmark configurations, incorporating both cross-view and cross-scene settings to comprehensively assess model robustness from temporal and spatial perspectives.***
+
+</div>
+
+
 To evaluate the model's generalization and robustness, we designed two distinct cross-validation benchmarks: **cross-video** and **cross-scene**.
 
 - **Cross-video evaluation.** We sequentially numbered 120 video segments, with snippets from odd-numbered videos used for training and even-numbered for testing. This method evaluates the model's ability to generalize across diverse video sequences.
@@ -367,6 +376,29 @@ Therefore, for the predicted score, calculating AP requires **two** steps.
 
 `python ap_cal_fushion.py`
 
+# Discussion
+
+## Coordinate Correction
+
+In the Crosswalk dataset, pedestrians and vehicles share a unified coordinate system. Due to the fixed surveillance camera angle, the dataset includes two zebra crossing regions: the upper crossing, which is nearly horizontal, and the lower crossing, which appears slightly tilted.
+
+This difference introduces a unique generalization challenge—whether models trained on interactions in the horizontal region can effectively generalize to those occurring in the tilted region.
+
+Despite our efforts, we were unable to identify a suitable strategy for coordinate correction. We explored inverse perspective mapping (IPM) as a potential method to correct the tilted zebra crossing region, aiming to achieve a more consistent view.
+
+Specifically, we processed each video frame individually, transforming the lower zebra crossing to resemble the horizontal perspective of the upper crossing.
+
+![](demo/IPM.jpg)
+
+<div align="center">
+  
+  ***Illustration of the inverse perspective mapping (IPM) process.***
+  *After applying IPM to the original frames, the inclined lower region is transformed into a horizontal region, and these processed frames are subsequently used to construct video representations (VR).*
+
+</div>
+
+Experiments with SlowFast as the backbone network showed that models trained on corrected video representations performed worse than those trained on original frames. We hypothesize that the transformation-induced distortions negatively impacted feature extraction.
+ 
 # Contact
 
 Any questions, feel free to contact me via email: `zeshenghu@njnu.edu.cn`
