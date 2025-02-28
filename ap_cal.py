@@ -83,7 +83,7 @@ def load_eiou(file_path):
 eiou_th = float(threshold)  
 
 # Load eiou
-eiou_path = 'eiou_values.txt'
+eiou_path = 'eiou_values_updated.txt'
 eiou = load_eiou(eiou_path)
 
 y_true = []
