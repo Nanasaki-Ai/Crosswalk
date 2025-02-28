@@ -27,7 +27,7 @@ benchmark = arg.benchmark
 backbone = arg.backbone
 threshold = arg.threshold
 
-weight_rr = 0.8           # 0.5 for vivit
+weight_rr = 0.8           
 weight_vr = 1 - weight_rr
 
 assert (weight_vr + weight_rr) == 1.0, "The sum of weights must be 1."
@@ -68,7 +68,7 @@ def load_eiou(file_path):
 eiou_th = float(threshold)  
 
 # Load eiou
-eiou_path = 'eiou_values.txt'
+eiou_path = 'eiou_values_updated.txt'
 eiou = load_eiou(eiou_path)
 
 y_true = []
