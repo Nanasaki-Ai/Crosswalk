@@ -398,7 +398,106 @@ Specifically, we processed each video frame individually, transforming the lower
 </div>
 
 Experiments with SlowFast as the backbone network showed that models trained on corrected video representations performed worse than those trained on original frames. We hypothesize that the transformation-induced distortions negatively impacted feature extraction.
- 
+
+<div align="center">
+
+<table>
+  <caption>Detection performance of the proposed framework under different video representation inputs.</caption>
+  <thead>
+    <tr>
+      <th rowspan="2">Input</th>
+      <th colspan="3">Cross-scene</th>
+      <th colspan="3">Cross-video</th>
+    </tr>
+    <tr>
+      <th><i>AP</i><sub>v</sub></th>
+      <th><i>AP</i><sub>n</sub></th>
+      <th><i>mAP</i></th>
+      <th><i>AP</i><sub>v</sub></th>
+      <th><i>AP</i><sub>n</sub></th>
+      <th><i>mAP</i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Video representation after IPM</td>
+      <td>34.2</td>
+      <td>81.1</td>
+      <td>57.7</td>
+      <td>56.4</td>
+      <td>89.0</td>
+      <td>72.7</td>
+    </tr>
+    <tr>
+      <td>Original video representation</td>
+      <td><strong>49.4</strong></td>
+      <td><strong>87.4</strong></td>
+      <td><strong>68.4</strong></td>
+      <td><strong>66.2</strong></td>
+      <td><strong>92.9</strong></td>
+      <td><strong>79.6</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+*The AP results are reported under EIoU@0.5 (%). Bold indicates the best performance.*
+
+</div>
+
+## Rule-Based Violation Detection Approach
+
+Rule-based methods have indeed demonstrated their effectiveness in detecting pedestrian-yielding violations, as exemplified by existing implementations in traffic law enforcement.
+
+<hr style="width:20%;text-align:center;margin-left:auto;margin-right:auto;">
+
+ <p align="center">
+  <img src="demo/rule_sample1.jpg" alt="Stage #3" width="250"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="demo/rule_sample2.jpg" alt="Stage #5" width="260"/>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="demo/rule_sample3.jpg" alt="Stage #5" width="265"/>
+</p>
+ <p align="center">
+  <em><strong>Rule-Based Detection of Pedestrian-Yielding Violations.</strong> All three images depict recorded violations in Jiangsu, China, in 2024. For better visualization, the violating vehicles are marked with red bbox, obstructed pedestrians with green bbox, and the "yield-to-pedestrian" marking lines with purple bbox.</em>
+</p> 
+
+<hr style="width:20%;text-align:center;margin-left:auto;margin-right:auto;">
+
+<p>
+  As illustrated in the above figure, pedestrian-yielding violations in Jiangsu, China, were recorded in 2024 as part of an enforcement initiative. According to the officers at Nanjing Transport, the existing automatic detection algorithm verifies violations based on three key frames capturing vehicle-pedestrian interactions at crosswalks:
+</p>
+<ul>
+  <li>
+    The first frame (<strong>top-left</strong>) records a vehicle approaching the crosswalk while a pedestrian is present in the vicinity. A designated "yield-to-pedestrian" line is marked to indicate the expected stopping point.
+  </li>
+  <li>
+    The second frame (<strong>top-right</strong>) captures the vehicle entering the crosswalk while the pedestrian remains nearby, suggesting a potential violation.
+  </li>
+  <li>
+    The third frame (<strong>bottom-left</strong>) documents the vehicle leaving the crosswalk while the pedestrian is still either in their original lane or within the vehicle's path, confirming a failure to yield.
+  </li>
+  <li>
+    The final frame (<strong>bottom-right</strong>) provides a close-up of the vehicle’s license plate for identification and enforcement purposes.
+  </li>
+</ul>
+<p>
+  Inspired by this rule-based approach, we define pedestrian-yielding violations as an interaction event, where the event begins when a vehicle enters the crosswalk and ends when it exits. 
+  <strong>However, as discussed later, the applicability of such rule-based methods is limited in diverse and unconstrained environments, such as those in our Crosswalk dataset.</strong>
+</p>
+
+<ul>
+  <li>
+    <strong>Absence of Designated Yield Lines.</strong> Many rule-based detection systems depend on explicitly marked "yield-to-pedestrian" lines that indicate where vehicles should stop for pedestrians. However, the <em>Crosswalk</em> dataset, collected from surveillance video in Bangkok, Thailand, does not feature such standardized markings, making it difficult to define a universal rule for pedestrian-yielding violations.
+  </li>
+  <li>
+    <strong>Inconsistent Road Layouts.</strong> Rule-based methods often require clear lane delineations to determine whether a pedestrian is within the immediate path of an oncoming vehicle. The <em>Crosswalk</em> dataset includes scenes where lane markings are either unclear or absent, further complicating the application of rule-based heuristics.
+  </li>
+</ul>
+<p>
+  <strong>While rule-based approaches hold potential, defining an effective and generalizable rule set for our dataset remains a challenge. Therefore, we explore a supervised learning approach, where violations are labeled, and the model learns decision boundaries from data, aiming to generalize across diverse spatiotemporal conditions.</strong>
+</p>
+
+
 # Contact
 
 Any questions, feel free to contact me via email: `zeshenghu@njnu.edu.cn`
