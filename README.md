@@ -340,7 +340,11 @@ It is recommended to **put these files in a folder as follows**, and you can als
 
 `python main.py`
 
-You can use the model we have trained for testing. The [model](https://pan.baidu.com/s/1-doUH8tVlqMzRaUqd-qGUw?pwd=hcqv) is specially for **cross-scene** evaluation.
+You can use the model we have trained for testing.
+
+The [model](https://pan.baidu.com/s/1S_qpnTAsqfm40hus6ERnOQ?pwd=pn8w) is specially for **cross-scene** evaluation.
+
+The [model](https://pan.baidu.com/s/1a-DvLZTz61OxcMEjaFUYBA?pwd=q3n9) is specially for **cross-video** evaluation.
 
 Please **calculate AP** after predicting the illegal/non-violation scores. Please refer to the next step for specific operations.
 
