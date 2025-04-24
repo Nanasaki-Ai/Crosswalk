@@ -44,6 +44,10 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 # Update Notification
 
+- *Apr 21, 2025*
+
+&nbsp;&nbsp;&nbsp;&nbsp; Our paper has been accepted by *IEEE Transactions on Intelligent Transportation Systems* (**TITS**).
+
 - *Dec 13, 2024*
 
 &nbsp;&nbsp;&nbsp;&nbsp; You can download the model [parameters](#training-and-testing) to reproduce.
@@ -55,6 +59,30 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 &nbsp;&nbsp;&nbsp;&nbsp; Some important data is already available for download from **Google Drive**.
 
 # Crosswalk
+
+## Dataset License and Usage Statement
+
+This dataset is released for *non-commercial research and educational purposes only*. By downloading or using this dataset, you agree to the following terms:
+
+*Non-Commercial Use Only:*
+The dataset must not be used for commercial purposes or any commercial gain.
+
+*Attribution Required:*
+Any publications or projects using this dataset must cite the original source as specified in the accompanying documentation.
+
+*No Redistribution:*
+Redistribution of the dataset, in whole or in part, is strictly prohibited. Please refer interested users to the official release source.
+
+*No Warranty:*
+The dataset is provided "as is" without any warranties, express or implied. The authors and affiliated institutions are not liable for any damages or consequences arising from the use of this dataset.
+
+*Ethical Use:*
+Users must use this dataset in accordance with applicable laws and ethical research guidelines. It must not be used in any way that could cause harm or violate the rights of individuals.
+
+**Governing Institution and Legal Responsibility**
+
+The School of Computer and Electronic Information / School of Artificial Intelligence, Nanjing Normal University, reserves the final right of interpretation of this dataset and its license.
+Any individual or organization found in violation of the above terms may be subject to legal action and liability as deemed appropriate by the institution.
 
 ## Dataset Introduction
 
@@ -70,9 +98,9 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
  
  To reduce extraneous background activity, the recordings were confined to areas of interest, yielding a final video resolution of 1200×1100 pixels at 30 fps.
 
- We will **make the dataset fully available for download** after **the manuscript is accepted**. Now you can reproduce our method in two ways:
+ Now you can reproduce our method in two ways:
 
- - Download a video (514MB) from the dataset and continue. You can download the data through [Baidu Disk](https://pan.baidu.com/s/1KAySJ_DNrKo6M6l0_Si7nw?pwd=cpgd) or [Google Drive](https://drive.google.com/file/d/16By0jyQPQsdZpp_oTwgnEppsrpBTTYox/view?usp=drive_link).
+ - Download the full dataset and continue. You can download the data through [Baidu Disk](https://pan.baidu.com/s/1OrlSCXYRVd35eXw2Pry8nA?pwd=985x).
 
  - You can **directly download our preprocessed data for reproduction**.
 
