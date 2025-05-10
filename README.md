@@ -15,7 +15,7 @@
 This is the dataset and code for manuscript
 
 **Crosswalk: A Traffic Monitoring Dataset for Vehicle Non-Yielding Violations Detection   
-and Interactive Scenarios Understanding**.
+and Interactive Scenarios Understanding**. ([*TITS 2025*](https://ieeexplore.ieee.org/document/10991963))
 
 ✨ *A modest and well-mannered human, as warm and soothing as jade.* ✨
 
@@ -62,7 +62,7 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 ## Dataset License and Usage Statement
 
-This dataset is released for *non-commercial research and educational purposes only*. By downloading or using this dataset, you agree to the following terms:
+This dataset is released for *educational purposes only*. By downloading or using this dataset, you agree to the following terms:
 
 *Non-Commercial Use Only:*
 The dataset must not be used for commercial purposes or any commercial gain.
@@ -79,8 +79,7 @@ The dataset is provided "as is" without any warranties, express or implied. The 
 *Ethical Use:*
 Users must use this dataset in accordance with applicable laws and ethical research guidelines. It must not be used in any way that could cause harm or violate the rights of individuals.
 
-**Governing Institution and Legal Responsibility**
-
+*Governing Institution and Legal Responsibility:*
 The School of Computer and Electronic Information / School of Artificial Intelligence, Nanjing Normal University, reserves the final right of interpretation of this dataset and its license.
 Any individual or organization found in violation of the above terms may be subject to legal action and liability as deemed appropriate by the institution.
 
@@ -122,7 +121,7 @@ Each JSON file contains two key data, namely **class**, **points** and **group_i
 
 - **class** indicates whether a vehicle violates the rule of giving way to pedestrians during the event.
   
-  **class** is **0 for a violation** and **1 for no violation**.
+  **class** is **0 for violation** and **1 for non-violation**.
 
 - The bounding box coordinates are recorded under **points**, capturing the **key vehicle's location as it enters and exits the crosswalk**.
 
