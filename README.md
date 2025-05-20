@@ -533,6 +533,17 @@ Rule-based methods have indeed demonstrated their effectiveness in detecting ped
 
 Any questions, feel free to contact me via email: `zeshenghu@njnu.edu.cn`
 
+# Citation 
+ 
+```bibtex
+@article{hu2025crosswalk,
+  title={Crosswalk: A Traffic Monitoring Dataset for Vehicle Non-Yielding Violations Detection and Interactive Scenarios Understanding},
+  author={Hu, Zesheng and Ji, Genlin and Xu, Jie and Li, Le},
+  journal={IEEE Transactions on Intelligent Transportation Systems},
+  year={2025}
+}
+```
+
 <div align="center">
 
 # Acknowledgments
