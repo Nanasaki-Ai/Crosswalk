@@ -46,6 +46,10 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 - *Apr 21, 2025*
 
+&nbsp;&nbsp;&nbsp;&nbsp; All videos of the Crosswalk dataset are now available for download via [Figshare]().
+
+- *Apr 21, 2025*
+
 &nbsp;&nbsp;&nbsp;&nbsp; Our paper has been accepted by *IEEE Transactions on Intelligent Transportation Systems* (**TITS**).
 
 - *Dec 13, 2024*
@@ -101,7 +105,27 @@ Any individual or organization found in violation of the above terms may be subj
 
  - Download the full dataset and continue. You can download the data through [Baidu Disk](https://pan.baidu.com/s/1OrlSCXYRVd35eXw2Pry8nA?pwd=985x).
 
+ - You can also download the Crosswalk dataset via Figshare.
+Due to upload size limitations, we split the dataset into three parts, each containing 40 videos.
+This means you will need to download all three parts separately:
+
+&nbsp;&nbsp;&nbsp;&nbsp; Part 1: **video_001.avi~video_040.avi** &nbsp;&nbsp; [Download](https://figshare.com/articles/dataset/video_001_avi_video_040_avi/29983897)
+
+&nbsp;&nbsp;&nbsp;&nbsp; Part 2: **video_041.avi~video_080.avi** &nbsp;&nbsp; [Download](https://figshare.com/articles/dataset/video_041_avi_video_080_avi/30050131)
+
+&nbsp;&nbsp;&nbsp;&nbsp; Part 3: **video_081.avi~video_120.avi** &nbsp;&nbsp; [Download](https://figshare.com/articles/dataset/video_081_avi_video_120_avi/30051331)
+
  - You can **directly download our preprocessed data for reproduction**.
+
+ - Since upgrading Google Drive storage requires additional fees, which are currently beyond our budget, we are unable to share the full Crosswalk dataset via Google Drive at this time. We sincerely apologize for any inconvenience.
+
+If researchers are still interested in obtaining the dataset through Google Drive, we kindly ask that:
+
+&nbsp;&nbsp;&nbsp;&nbsp; *You provide a Google account with more than 50GB of available storage (along with temporary access credentials). We will upload the dataset to this account, after which you are free to change the password.*
+
+&nbsp;&nbsp;&nbsp;&nbsp; *You agree to keep sharing the Crosswalk dataset as a public resource for the community.*
+
+Our goal is to leverage community efforts to provide a more convenient way for everyone to access the dataset. Beyond this approach, we currently have no plans to host the entire dataset on our own Google Drive. We appreciate your understanding and support.
 
 ## Dataset Annotations
 
