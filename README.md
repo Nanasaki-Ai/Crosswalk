@@ -44,7 +44,7 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 # Update Notification
 
-- *Apr 21, 2025*
+- *Sep 3, 2025*
 
 &nbsp;&nbsp;&nbsp;&nbsp; All videos of the Crosswalk dataset are now available for download via [Figshare]().
 
