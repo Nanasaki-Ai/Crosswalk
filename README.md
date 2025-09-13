@@ -46,7 +46,7 @@ just as it is for pedestrians to express their gratitude with warmth.* 🌟
 
 - *Sep 3, 2025*
 
-&nbsp;&nbsp;&nbsp;&nbsp; All videos of the Crosswalk dataset are now available for download via [Figshare]().
+&nbsp;&nbsp;&nbsp;&nbsp; All videos of the Crosswalk dataset are now available for download via [Figshare](#dataset-download).
 
 - *Apr 21, 2025*
 
@@ -100,6 +100,8 @@ Any individual or organization found in violation of the above terms may be subj
  Focusing on **two** crosswalks, the dataset captures vehicles moving bidirectionally, entering and exiting the frame via the left and right boundaries.
  
  To reduce extraneous background activity, the recordings were confined to areas of interest, yielding a final video resolution of 1200×1100 pixels at 30 fps.
+
+## Dataset Download
 
  Now you can reproduce our method in two ways:
 
