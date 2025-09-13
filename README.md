@@ -103,7 +103,7 @@ Any individual or organization found in violation of the above terms may be subj
 
 ## Dataset Download
 
- Now you can reproduce our method in two ways:
+ Now you can download the Crosswalk dataset in two ways:
 
  - Download the full dataset and continue. You can download the data through [Baidu Disk](https://pan.baidu.com/s/1OrlSCXYRVd35eXw2Pry8nA?pwd=985x).
 
