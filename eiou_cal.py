@@ -5,7 +5,7 @@ from tools import *
 label_file = 'label_txt'   
 det_file = 'filtering_woatt_summary' 
 video_file = 'intersection-video'  
-trajectory_file = 'generated_images'  
+trajectory_file = 'generated_ped_images'  
 
 # folder_trajectory = 'tracking_output' 
 folder_filtering_woatt = 'filtering_woatt_output'  
@@ -105,5 +105,6 @@ output_file = 'eiou_values.txt'
 with open(output_file, 'w') as f:
     for save_name, eiou in save_name_eiou_pairs:
         f.write(f"{save_name} {eiou:.2f}\n")  # Write each save_name and eiou pair
+
 
 print(f'Total number of pairs: {len(save_name_eiou_pairs)}')
