@@ -433,6 +433,23 @@ Therefore, for the predicted score, calculating AP requires **two** steps.
 
 `python ap_cal_fushion.py`
 
+### Regarding EIoU
+
+For those interested in this work, we would like to point out a potential issue.
+When computing the event-level intersection over union (EIoU) between detected events and ground-truth events, you may refer to the provided file: eiou_values_updated.txt.
+This file contains the EIoU results computed after we updated the pedestrian region of interest (ROI) and vehicle ROI.
+
+You may use these results as the official reference, or define your own ROIs to compute EIoU based on your preferred settings.
+Refer to eiou_cal.py for guidance — you can freely specify the spatial regions of interest to calculate SIoU and TIoU, and then derive the event-level EIoU.
+Doing so may lead to a different total number of detected events, as well as changes in the counts within the training and testing sets.
+
+We consider such variations in ROI definitions acceptable, as you might have more reasonable or task-specific settings.
+Reasonable modifications are encouraged, as they can further demonstrate the flexibility and potential value of this dataset and related work.
+If you choose to adopt a different ROI configuration, we recommend that you clearly report the following updated statistics in your paper:
+
+        -Total number of detected events
+        -Number of violating and non-violating events in the training and testing sets
+
 # Discussion
 
 ## Coordinate Correction
