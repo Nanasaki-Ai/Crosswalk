@@ -21,7 +21,7 @@ label_file = 'label_txt'   # Path to the label value folder, contains several tx
 det_file = 'filtering_woatt_summary' # Simplified detection value folder, used for matching
 
 video_file = 'intersection-video'  # Path to the video frames folder, contains several subfolders, from video_001 to video_120
-trajectory_file = 'generated_images'  # Path to the trajectory video frames folder, contains several subfolders, from video_001 to video_120
+trajectory_file = 'generated_ped_images'  # Path to the trajectory video frames folder, contains several subfolders, from video_001 to video_120
 
 # folder_trajectory = 'tracking_output'  # Path to the original trajectory folder
 folder_filtering_woatt = 'filtering_woatt_output'  # Path to the preprocessed trajectory folder
@@ -185,3 +185,4 @@ for file_name in tqdm(video_num, desc='Processing files'):
                 continue                
             crop_images(video_path, rgb_save_path, crop_rectangle, det_start-1, det_end-1, frame=32)    
    
+
